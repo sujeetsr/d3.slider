@@ -1,0 +1,75 @@
+body {
+  font: 12px/1.5em "Helvetica Neue", Helvetica,Arial,sans-serif
+}
+
+.wrapper {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50px;
+}
+
+.r-slider {
+  position: relative;
+  z-index: 2;
+  height: 25px;
+  background: none;
+}
+
+.r-slider-axis {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.r-slider-axis path {
+  stroke-width: 4;
+  stroke: #ccc;
+  fill: none;
+}
+
+.r-slider-axis line {
+    fill: none;
+    stroke: #555;
+    shape-rendering: crispEdges;
+}
+
+.tick.minor text {
+  display: none;
+}
+
+.tick line {
+  stroke-width: 1;
+}
+.tick.minor line {
+  stroke-width: 1;
+  stroke: #bbb;
+}
+
+.dragger rect {
+  fill: none;
+  stroke-width: 1;
+  stroke: #aaa;
+}
+
+.dragger line {
+  stroke: #aa0000;
+  fill: none;
+}
+
+.dragger circle {
+  stroke: none;
+  fill: #aa0000;
+}
+
+.min-marker line {
+  stroke: #aa0000;
+  fill: none;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+
