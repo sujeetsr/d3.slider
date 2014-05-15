@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>D3 Slider</title>
+  <link rel="stylesheet" href="d3.slider.css" />  
+  <style>
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    
+    <p>Slider with no ticks</p>    
+    <div id="slider1"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>Slider with number of ticks specified. Tick values are calculated by d3's axis tick functions</p>    
+    <div id="slider2"></div>
+
+  </div>
+
+ 
+</body>
+<script src="d3.v3.min.js"></script>
+<script src="d3.slider.js"></script>
+<script src="example.js"></script>
+<script>
+  
+  var slider1 = d3.slider().min(0).max(10);
+  d3.select('#slider1').call(slider1);
+
+  var slider2 = d3.slider().min(0).max(10).ticks(10);
+  d3.select('#slider2').call(slider2);
+
+
+
+
+  /*
+  var callback = function(slider) {
+  d3.select("#size").property('value', slider.value());
+  }
+  var min=1, max=2000;
+
+  // render slider
+  var slider = 
+  d3.slider().min(min).max(max).tickValues(genTicksForShareSize(min, max)).tickFormat(sizeFormatter).classPrefix('r').callback(callback);
+  d3.select('#slider').call(slider);
+  slider.setValue(200);
+
+  d3.select("#size").on('change', function(){
+  console.log('setting value to ' + parseInt(this.value));
+  slider.setValue(parseInt(this.value));
+
+  });
+  */
+
+</script>
+</html>
+
+
