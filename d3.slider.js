@@ -7,7 +7,8 @@ d3.slider = function module() {
   tickSize = 6,
   margin = {top: 50, right: 50, bottom: 50, left: 50}, 
   ticks = 0, tickValues, scale, tickFormat, dragger, width, 
-  callbackFn, snapValues, focus;
+  range = false,
+  callbackFn, stepValues, focus;
 
   function slider(selection) {
     selection.each(function() {
@@ -35,10 +36,12 @@ d3.slider = function module() {
       .attr("height", rectHeight);
      
       // Range rect 
-      svg.append("rect")
-      .attr("class", "d3slider-rect-value")
-      .attr("width", scale(value))
-      .attr("height", rectHeight);
+      if (range) {
+        svg.append("rect")
+        .attr("class", "d3slider-rect-value")
+        .attr("width", scale(value))
+        .attr("height", rectHeight);
+      }
       
       // Axis      
       var axis = d3.svg.axis()
@@ -192,8 +195,8 @@ d3.slider = function module() {
     var newValue = scale.invert(pos - margin.left);
     // find tick values that are closest to newValue
     // lower bound
-    if (snapValues != undefined) {
-      l = snapValues.reduce(function(p, c, i, arr){
+    if (stepValues != undefined) {
+      l = stepValues.reduce(function(p, c, i, arr){
         if (c < newValue) {
           return c;
         } else {
@@ -202,8 +205,8 @@ d3.slider = function module() {
       });
 
       // upper bound
-      if (snapValues.indexOf(l) < snapValues.length-1) {
-        u = snapValues[snapValues.indexOf(l) + 1];
+      if (stepValues.indexOf(l) < stepValues.length-1) {
+        u = stepValues[stepValues.indexOf(l) + 1];
       } else {
         u = l;
       }
@@ -224,10 +227,12 @@ d3.slider = function module() {
     
     svg.selectAll(".dragger").select("text")
     .text(d3.format(",.0f")(value));
-    
-    svg.selectAll(".d3slider-rect-value")
-    .attr("width", scale(value));
-    
+   
+    if (range) { 
+      svg.selectAll(".d3slider-rect-value")
+      .attr("width", scale(value));
+    }
+
     if (callbackFn) {
       callbackFn(slider);
     }
@@ -264,9 +269,9 @@ d3.slider = function module() {
     return slider;
   }
 
-  slider.snapValues = function(_) {
-    if (!arguments.length) return snapValues;
-    snapValues = _;
+  slider.stepValues = function(_) {
+    if (!arguments.length) return stepValues;
+    stepValues = _;
     return slider;
   }
   
@@ -279,6 +284,12 @@ d3.slider = function module() {
   slider.value = function(_) {
     if (!arguments.length) return value;
     value = _;
+    return slider;
+  } 
+  
+  slider.showRange = function(_) {
+    if (!arguments.length) return range;
+    range = _;
     return slider;
   } 
 
@@ -295,7 +306,7 @@ d3.slider = function module() {
 
   slider.mousemove = function() {
     var pos = d3.mouse(this)[0];
-    var val = slider.getNearest(scale.invert(pos), snapValues);
+    var val = slider.getNearest(scale.invert(pos), stepValues);
     focus.attr("transform", "translate(" + scale(val) + ",0)");
     focus.selectAll("text").text(val);
   }

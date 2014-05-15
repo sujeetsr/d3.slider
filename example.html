@@ -5,20 +5,39 @@
   <title>D3 Slider</title>
   <link rel="stylesheet" href="d3.slider.css" />  
   <style>
+    .example {margin-bottom: 50px; }
 
   </style>
 </head>
 <body>
   <div class="wrapper">
-    
-    <p>Slider with no ticks</p>    
-    <div id="slider1"></div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <p>Slider with number of ticks specified. Tick values are calculated by d3's axis tick functions</p>    
-    <div id="slider2"></div>
+
+    <div class="example"> 
+      <p>Slider with no ticks</p>    
+      <div id="slider1"></div>
+    </div>
+    <div class="example"> 
+      <p>Slider with number of ticks specified. Tick values are calculated by d3's axis tick functions</p>    
+      <div id="slider2"></div>
+    </div>
+    <div class="example"> 
+      <p>
+      Slider with tick values as arguments. Tick values are specified as an array of values between the minimum and maximum values, and do not necessarily have to be evenly spaced
+      </p>    
+      <div id="slider3"></div>
+    </div>
+    <div class="example"> 
+      <p>
+      Slider with step increments. Step values are specified as an array. If tickValues are also specified, the tick values array must be a subset of the step values.
+      </p>
+      <div id="slider4"></div>
+    </div>
+    <div class="example"> 
+      <p>
+      Slider value displayed as a range. 
+      </p>
+      <div id="slider5"></div>
+    </div>
 
   </div>
 
@@ -35,8 +54,15 @@
   var slider2 = d3.slider().min(0).max(10).ticks(10);
   d3.select('#slider2').call(slider2);
 
+  var slider3 = d3.slider().min(0).max(10).tickValues([1,3,5,7,10]);
+  d3.select('#slider3').call(slider3);
 
+  var slider4 = d3.slider().min(0).max(20).tickValues([0,5,10,15,20])
+  .stepValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19.20]);
+  d3.select('#slider4').call(slider4);
 
+  var slider5 = d3.slider().min(0).max(10).ticks(10).showRange(true);
+  d3.select('#slider5').call(slider5);
 
   /*
   var callback = function(slider) {
