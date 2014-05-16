@@ -43,7 +43,8 @@
         <section id="main_content">
           <p>d3.slider is a configurable slider control built with <a href="http://d3js.org">d3.js</a></p>
           <div class="example">
-            <h4>Usage</h4>
+            <h3>Usage</h3>
+            <h4>Code</h4>
             <p>In your html, create a div with a specified width. This will be the container for the slider.</p>
 <pre class="prettyprint linenums">
   &lt;div id="slider"&gt;&lt;/div&gt;
@@ -51,34 +52,63 @@
             <p>In your javascript code, initialize the slider with the required options, and call the slider function on the div like this</p>
 <pre class="prettyprint linenums">
   var slider = d3.slider().min(0).max(10).ticks(10).showRange(true);
-  d3.select('#slider').call(slider5);
+  d3.select('#slider').call(slider);
 </pre>
+            <h4>Output</h4>
+            <div id="slider"></div>
             <p></p>
           </div>
+          <h2>Examples</h2>
+          <p>The slider can be customized with various options. These are documented below.</p>
           <div class="example"> 
-            <p>Slider with no ticks</p>    
+            <h3>Minimum and maximum values</h3>
+            <p>The minimum and maximum values for the slider have to be specified. They can be specified as follows</p>    
+<pre class="prettyprint">
+  var slider = d3.slider().min(0).max(10);
+</pre>
+            <p>This will create a slider for the specified range, without any tick marks, as shown below</p>
             <div id="slider1"></div>
           </div>
+          <h3>Specifying ticks</h3>
+          <p>Ticks can be specified in multiple ways</p>
+
           <div class="example"> 
+            <h5>Specifying number of ticks</h5>
             <p>Slider with number of ticks specified. Tick values are calculated by d3's axis tick functions</p>    
+<pre class="prettyprint">
+  var slider = d3.slider().min(0).max(10).ticks(10);
+</pre>
             <div id="slider2"></div>
           </div>
           <div class="example"> 
+            <h5>Tick values as arguments</h5>
             <p>
-            Slider with tick values as arguments. Tick values are specified as an array of values between the minimum and maximum values, and do not necessarily have to be evenly spaced
+            Tick values can be specified as an array of values between the minimum and maximum values, and do not necessarily have to be evenly spaced.
             </p>    
+<pre class="prettyprint">
+var slider = d3.slider().min(0).max(10).tickValues([1,3,5,7,10]);
+</pre>
             <div id="slider3"></div>
           </div>
+          <h3>Step increments</h3>
+          <p>Slider movement can be continuous or in steps</p>
           <div class="example"> 
             <p>
             Slider with step increments. Step values are specified as an array. If tickValues are also specified, the tick values array must be a subset of the step values.
             </p>
+<pre class="prettyprint">
+var slider = d3.slider().min(0).max(20).tickValues([0,5,10,15,20]).stepValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19.20]);
+</pre>
             <div id="slider4"></div>
           </div>
           <div class="example"> 
+            <h3>Display current value shaded</h3>
             <p>
-            Slider value displayed as a range. 
+            The range from minimum to the current slider value can be displayed shaded as shown below. 
             </p>
+<pre class="prettyprint">
+var slider = d3.slider().min(0).max(10).ticks(10).showRange(true).value(4);
+</pre>
             <div id="slider5"></div>
           </div>
           <div class="example"> 
@@ -86,6 +116,14 @@
             Slider with custom tick format
             </p>
             <div id="slider6"></div>
+          </div>
+          <div class="example"> 
+            <h3>Initial value</h3>
+            <p>The initial value of the slider can be set as shown below</p>    
+<pre class="prettyprint">
+var slider = d3.slider().min(0).max(10).ticks(10).showRange(true).value(6);
+</pre>
+            <div id="slider7"></div>
           </div>
 
         </section>
@@ -102,7 +140,9 @@
     <script src="javascripts/d3.v3.min.js"></script>
     <script src="javascripts/d3.slider.js"></script>
     <script>
-      
+      var slider = d3.slider().min(0).max(10).ticks(10).showRange(true);
+      d3.select('#slider').call(slider);
+  
       var slider1 = d3.slider().min(0).max(10);
       d3.select('#slider1').call(slider1);
     
@@ -116,7 +156,8 @@
       .stepValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19.20]);
       d3.select('#slider4').call(slider4);
     
-      var slider5 = d3.slider().min(0).max(10).ticks(10).showRange(true);
+      var slider5 = d3.slider().min(0).max(10).ticks(10).showRange(true)
+      .value(4);
       d3.select('#slider5').call(slider5);
     
       // tick formatter
@@ -127,6 +168,9 @@
       var slider6 = d3.slider().min(0).max(50).ticks(10).showRange(true)
       .tickFormat(tickFormatter);
       d3.select('#slider6').call(slider6);
+      
+      var slider7 = d3.slider().min(0).max(10).ticks(10).showRange(true).value(6);
+      d3.select('#slider7').call(slider7);
     </script>
     <script type="text/javascript" src="plugins/google-code-prettify/prettify.js?skin=sunburst"></script>
 
