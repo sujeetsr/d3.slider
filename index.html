@@ -90,9 +90,9 @@ var slider = d3.slider().min(0).max(10).tickValues([1,3,5,7,10]);
 </pre>
             <div id="slider3"></div>
           </div>
-          <h3>Step increments</h3>
-          <p>Slider movement can be continuous or in steps</p>
           <div class="example"> 
+            <h3>Step increments</h3>
+            <p>Slider movement can be continuous or in steps</p>
             <p>
             Slider with step increments. Step values are specified as an array. If tickValues are also specified, the tick values array must be a subset of the step values.
             </p>
@@ -102,7 +102,21 @@ var slider = d3.slider().min(0).max(20).tickValues([0,5,10,15,20]).stepValues([1
             <div id="slider4"></div>
           </div>
           <div class="example"> 
-            <h3>Display current value shaded</h3>
+            <h3>Custom tick format</h3>
+            <p>The text displayed for ticks can be customized by passing in a function for tickFormat</p>
+<pre class="prettyprint">
+// tick formatter
+var formatter = d3.format(",.2f");
+var tickFormatter = function(d) {
+return formatter(d) + " GB";
+}
+var slider = d3.slider().min(0).max(50).ticks(10).showRange(true)
+.tickFormat(tickFormatter);
+</pre>
+            <div id="slider6"></div>
+          </div>
+          <div class="example"> 
+            <h3>Current value range shaded</h3>
             <p>
             The range from minimum to the current slider value can be displayed shaded as shown below. 
             </p>
@@ -110,12 +124,6 @@ var slider = d3.slider().min(0).max(20).tickValues([0,5,10,15,20]).stepValues([1
 var slider = d3.slider().min(0).max(10).ticks(10).showRange(true).value(4);
 </pre>
             <div id="slider5"></div>
-          </div>
-          <div class="example"> 
-            <p>
-            Slider with custom tick format
-            </p>
-            <div id="slider6"></div>
           </div>
           <div class="example"> 
             <h3>Initial value</h3>
