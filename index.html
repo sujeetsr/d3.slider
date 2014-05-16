@@ -5,15 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+<!--
+    <link rel="stylesheet" type="text/css" href="plugins/google-code-prettify/prettify.css" media="screen" />
+-->
+    <link rel="stylesheet" type="text/css" href="plugins/google-code-prettify/sunburst.css" media="screen" />
+<!--
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+-->
+<!--
+    <link rel="stylesheet" href="plugins/google-code-prettify/prettify.css" type="text/css" charset="utf-8">
+-->
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/d3.slider.css" media="screen" />
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <title>D3.slider by sujeetsr</title>
   </head>
 
-  <body>
+  <body onload="prettyPrint()">
     <div id="container">
       <div class="inner">
 
@@ -31,7 +41,53 @@
         <hr>
 
         <section id="main_content">
-          <p>A range slider control using d3.js. Work in progress</p>
+          <p>d3.slider is a configurable slider control built with <a href="http://d3js.org">d3.js</a></p>
+          <div class="example">
+            <h4>Usage</h4>
+            <p>In your html, create a div with a specified width. This will be the container for the slider.</p>
+<pre class="prettyprint linenums">
+  &lt;div id="slider"&gt;&lt;/div&gt;
+</pre>
+            <p>In your javascript code, initialize the slider with the required options, and call the slider function on the div like this</p>
+<pre class="prettyprint linenums">
+  var slider = d3.slider().min(0).max(10).ticks(10).showRange(true);
+  d3.select('#slider').call(slider5);
+</pre>
+            <p></p>
+          </div>
+          <div class="example"> 
+            <p>Slider with no ticks</p>    
+            <div id="slider1"></div>
+          </div>
+          <div class="example"> 
+            <p>Slider with number of ticks specified. Tick values are calculated by d3's axis tick functions</p>    
+            <div id="slider2"></div>
+          </div>
+          <div class="example"> 
+            <p>
+            Slider with tick values as arguments. Tick values are specified as an array of values between the minimum and maximum values, and do not necessarily have to be evenly spaced
+            </p>    
+            <div id="slider3"></div>
+          </div>
+          <div class="example"> 
+            <p>
+            Slider with step increments. Step values are specified as an array. If tickValues are also specified, the tick values array must be a subset of the step values.
+            </p>
+            <div id="slider4"></div>
+          </div>
+          <div class="example"> 
+            <p>
+            Slider value displayed as a range. 
+            </p>
+            <div id="slider5"></div>
+          </div>
+          <div class="example"> 
+            <p>
+            Slider with custom tick format
+            </p>
+            <div id="slider6"></div>
+          </div>
+
         </section>
 
         <footer>
@@ -42,5 +98,38 @@
         
       </div>
     </div>
+
+    <script src="javascripts/d3.v3.min.js"></script>
+    <script src="javascripts/d3.slider.js"></script>
+    <script>
+      
+      var slider1 = d3.slider().min(0).max(10);
+      d3.select('#slider1').call(slider1);
+    
+      var slider2 = d3.slider().min(0).max(10).ticks(10);
+      d3.select('#slider2').call(slider2);
+    
+      var slider3 = d3.slider().min(0).max(10).tickValues([1,3,5,7,10]);
+      d3.select('#slider3').call(slider3);
+    
+      var slider4 = d3.slider().min(0).max(20).tickValues([0,5,10,15,20])
+      .stepValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19.20]);
+      d3.select('#slider4').call(slider4);
+    
+      var slider5 = d3.slider().min(0).max(10).ticks(10).showRange(true);
+      d3.select('#slider5').call(slider5);
+    
+      // tick formatter
+      var formatter = d3.format(",.2f");
+      var tickFormatter = function(d) {
+      return formatter(d) + " GB";
+      }
+      var slider6 = d3.slider().min(0).max(50).ticks(10).showRange(true)
+      .tickFormat(tickFormatter);
+      d3.select('#slider6').call(slider6);
+    </script>
+    <script type="text/javascript" src="plugins/google-code-prettify/prettify.js?skin=sunburst"></script>
+
+
   </body>
 </html>

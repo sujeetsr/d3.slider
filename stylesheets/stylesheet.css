@@ -30,9 +30,9 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
-	list-style: none;
-}
+/*ol, ul {*/
+	/*list-style: none;*/
+/*}*/
 blockquote, q {
 	quotes: none;
 }
@@ -50,10 +50,11 @@ table {
 body {
   font-size: 1em;
   line-height: 1.5; 
-  background: #e7e7e7 url(../images/body-bg.png) 0 0 repeat;
+  /*background: #e7e7e7 url(../images/body-bg.png) 0 0 repeat;*/
+  background: #fff;
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-  color: #6d6d6d;
+  /*text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);*/
+  color: #333;
 }
 
 a {
@@ -85,12 +86,13 @@ header h2 {
 }
 
 #container {
-  background: transparent url(../images/highlight-bg.jpg) 50% 0 no-repeat;
+  /*background: transparent url(../images/highlight-bg.jpg) 50% 0 no-repeat;*/
+  background: #fff;
   min-height: 595px;
 }
 
 .inner {
-  width: 620px;
+  width: 960px;
   margin: 0 auto;
 }
 
@@ -165,32 +167,40 @@ a.button span {
   margin-right: 0;
 }
 
-code, pre {
-  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal;
-  color: #222;
-  margin-bottom: 30px;
-  font-size: 14px;
-}
-
-code {
-  background-color: #f2f2f2;
-  border: solid 1px #ddd;
-  padding: 0 3px;
-}
-
 pre {
-  padding: 20px;
-  background: #303030;
-  color: #f2f2f2;
-  text-shadow: none;
-  overflow: auto;
+    display: block;
+    padding: 8.5px;
+    margin: 0px 0px 9px;
+    font-size: 12px;
+    line-height: 18px;
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    word-wrap: break-word;
 }
-pre code {
-  color: #f2f2f2;
-  background-color: #303030;
-  border: none;
-  padding: 0;
+code, pre {
+    padding: 0px 3px 2px;
+    font-family: Menlo,Monaco,"Courier New",monospace;
+    font-size: 12px;
+    color: #333;
+    border-radius: 3px;
 }
+
+/*pre {*/
+  /*padding: 20px;*/
+  /*background: #303030;*/
+  /*color: #f2f2f2;*/
+  /*text-shadow: none;*/
+  /*overflow: auto;*/
+/*}*/
+/*pre code {*/
+  /*color: #f2f2f2;*/
+  /*background-color: #303030;*/
+  /*border: none;*/
+  /*padding: 0;*/
+/*}*/
 
 ul, ol, dl {
   margin-bottom: 20px;
