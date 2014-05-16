@@ -41,9 +41,11 @@ function genTicksForShareSize(min, max) {
   }
   snapValues = d3.range(0, tMax, snapStep);
   snapValues[0] = 1;
-  for (var i=0; i<= tMax; i+=tickStep) {
+  snapValues.push(tMax);
+  for (var i=0; i< tMax; i+=tickStep) {
     tickValues.push(i==0 ? 1 : i);
   }
+  tickValues.push(tMax);
   return [tickValues, snapValues];
 }
 
