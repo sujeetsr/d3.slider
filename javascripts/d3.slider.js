@@ -124,7 +124,7 @@ d3.slider = function module() {
 
       dragger.append("circle")
       .attr("class", "dragger-outer")
-      .attr("r", 8)
+      .attr("r", 10)
       .attr("transform", function(d) {
         return "translate(0,6)";
       });
