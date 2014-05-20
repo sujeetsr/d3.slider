@@ -70,40 +70,6 @@ d3.slider = function module() {
       //.exit()
       //.classed("minor", true);
    
-      // Min marker
-      //var minMarker = svgGroup.append("g")
-      //.attr("class", "min-marker")
-      //.attr("transform", "translate(" + scale(min) + ")");
-
-      //minMarker.append("text")
-      //.attr("x", 0)
-      //.attr("y", -15)
-      //.attr("text-anchor", "middle")
-      //.text(min + " GB");
-
-      //minMarker.append("line")
-      //.attr("x1", scale(min))
-      //.attr("y1", 0)
-      //.attr("x2", scale(min))
-      //.attr("y2", -15);
-
-      //// Max marker
-      //var maxMarker = svgGroup.append("g")  
-      //.attr("class", "max-marker")
-      //.attr("transform", "translate(" + scale(max) + ")");
-
-      //maxMarker.append("text")
-      //.attr("x", 0)
-      //.attr("y", -15)
-      //.attr("text-anchor", "middle")
-      //.text(max + " GB");
-
-      //minMarker.append("line")
-      //.attr("x1", scale(max))
-      //.attr("y1", 0)
-      //.attr("x2", scale(max))
-      //.attr("y2", -15);
-       
       var values = [value];
       dragger = svg.selectAll(".dragger")
       .data(values)
@@ -136,13 +102,6 @@ d3.slider = function module() {
         return "translate(0,6)";
       });
 
-      //dragger.append("rect")
-      //.attr("class", "dragger-rect")
-      //.attr("width", 10)
-      //.attr("height", rectHeight+4)
-      //.attr("transform", function(d) {
-      //  return "translate(-5,-2)";
-      //}) 
 
       // Enable dragger drag 
       var dragBehaviour = d3.behavior.drag();
@@ -151,30 +110,6 @@ d3.slider = function module() {
       
       // Move dragger on click 
       svg.on("click", slider.click);
-
-      //focus = svg.append("g")
-      //.style("display", "none");
-      
-      //focus.append("line")
-      //.attr("x1", 0)
-      //.attr("y1", 0)
-      //.attr("x2", 0)
-      //.attr("y2", rectHeight);
-      
-      //focus.append("text")
-      //.attr("x", 0)
-      //.attr("y", -15)
-      //.attr("text-anchor", "middle")
-      //.text("");
-      
-      //svg.append("rect")
-      //.attr("class", "overlay")
-      //.attr("width", width)
-      //.attr("height", height)
-      //.on("mouseover", function() { focus.style("display", null); })
-      //.on("mouseout", function() { focus.style("display", "none"); })
-      //.on("mousemove", slider.mousemove);
-      
 
     });
   }
