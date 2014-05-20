@@ -45,14 +45,23 @@
           <div class="example">
             <h3>Usage</h3>
             <h4>Code</h4>
-            <p>In your html, create a div with a specified width. This will be the container for the slider.</p>
-<pre class="prettyprint linenums">
-  &lt;div id="slider"&gt;&lt;/div&gt;
+            <p>In the head section of your html page, include the d3.slider.js and d3.slider.css files, and also
+              include the d3 library</p>
+<pre class="prettyprint">
+&lt;link rel="stylesheet" type="text/css" href="stylesheets/d3.slider.css" media="screen" /&gt;
+&lt;script src="javascripts/d3.v3.min.js&gt;&lt;/script&gt;
+&lt;script src="javascripts/d3.slider.js"&gt;&lt;/script&gt;
 </pre>
-            <p>In your javascript code, initialize the slider with the required options, and call the slider function on the div like this</p>
-<pre class="prettyprint linenums">
-  var slider = d3.slider().min(0).max(10).ticks(10).showRange(true).value(6);
-  d3.select('#slider').call(slider);
+            <p>In your html, create a div with a specified width. This will be the container for the slider.</p>
+<pre class="prettyprint">
+&lt;div id="slider"&gt;&lt;/div&gt;
+</pre>
+            <p>In your javascript code, create and initialize the slider with the required options, and call the slider function on the div like this</p>
+<pre class="prettyprint">
+// Initialize slider
+var slider = d3.slider().min(0).max(10).ticks(10).showRange(true).value(6);
+// Render the slider in the div
+d3.select('#slider').call(slider);
 </pre>
             <h4>Output</h4>
             <div id="slider"></div>
@@ -64,7 +73,7 @@
             <h3>Minimum and maximum values</h3>
             <p>The minimum and maximum values for the slider have to be specified. They can be specified as follows</p>    
 <pre class="prettyprint">
-  var slider = d3.slider().min(0).max(10);
+var slider = d3.slider().min(0).max(10);
 </pre>
             <p>This will create a slider for the specified range, without any tick marks, as shown below</p>
             <div id="slider1"></div>
@@ -76,7 +85,7 @@
             <h5>Specifying number of ticks</h5>
             <p>Slider with number of ticks specified. Tick values are calculated by d3's axis tick functions</p>    
 <pre class="prettyprint">
-  var slider = d3.slider().min(0).max(10).ticks(10);
+var slider = d3.slider().min(0).max(10).ticks(10);
 </pre>
             <div id="slider2"></div>
           </div>
