@@ -5,12 +5,12 @@
 }
 
 .d3slider-rect-range {
-  fill: #ccc;
+  fill: #777;
   stroke: none;
 }
 
 .d3slider-rect-value {
-  fill: #C6DBEF;
+  fill: #006EE3;
   stroke: none;
 }
 
@@ -60,9 +60,14 @@
   fill: none;
 }
 
-.dragger circle {
+.dragger-outer {
+  fill: #fff;
+  stroke: #000;
+}
+
+.dragger-inner {
+  fill: #B30424;
   stroke: none;
-  fill: #000;
 }
 
 .min-marker line {

@@ -3,7 +3,7 @@ d3.slider = function module() {
 
   var min = 0, max = 100, svg, svgGroup, value, classPrefix, axis, 
   height=40, rect,
-  rectHeight = 20,
+  rectHeight = 12,
   tickSize = 6,
   margin = {top: 25, right: 25, bottom: 15, left: 25}, 
   ticks = 0, tickValues, scale, tickFormat, dragger, width, 
@@ -114,9 +114,6 @@ d3.slider = function module() {
         return "translate(" + scale(d) + ")";
       }) 
      
-      //dragger.append("circle")
-      //.attr("cy", 0)
-      //.attr("r", 5);
       
       dragger.append("text")
       .attr("x", 0)
@@ -125,19 +122,27 @@ d3.slider = function module() {
       .attr("class", "draggertext")
       .text(d3.format(",.0f")(value));
 
-      //dragger.append("line")
-      //.attr("x1", 0)
-      //.attr("y1", 0)
-      //.attr("x2", 0)
-      //.attr("y2", rectHeight );
-      
-      dragger.append("rect")
-      .attr("class", "dragger-rect")
-      .attr("width", 10)
-      .attr("height", rectHeight+4)
+      dragger.append("circle")
+      .attr("class", "dragger-outer")
+      .attr("r", 8)
       .attr("transform", function(d) {
-        return "translate(-5,-2)";
-      }) 
+        return "translate(0,6)";
+      });
+      
+      dragger.append("circle")
+      .attr("class", "dragger-inner")
+      .attr("r", 4)
+      .attr("transform", function(d) {
+        return "translate(0,6)";
+      });
+
+      //dragger.append("rect")
+      //.attr("class", "dragger-rect")
+      //.attr("width", 10)
+      //.attr("height", rectHeight+4)
+      //.attr("transform", function(d) {
+      //  return "translate(-5,-2)";
+      //}) 
 
       // Enable dragger drag 
       var dragBehaviour = d3.behavior.drag();

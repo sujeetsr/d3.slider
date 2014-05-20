@@ -51,7 +51,7 @@
 </pre>
             <p>In your javascript code, initialize the slider with the required options, and call the slider function on the div like this</p>
 <pre class="prettyprint linenums">
-  var slider = d3.slider().min(0).max(10).ticks(10).showRange(true);
+  var slider = d3.slider().min(0).max(10).ticks(10).showRange(true).value(6);
   d3.select('#slider').call(slider);
 </pre>
             <h4>Output</h4>
@@ -148,7 +148,7 @@ var slider = d3.slider().min(0).max(10).ticks(10).showRange(true).value(6);
     <script src="javascripts/d3.v3.min.js"></script>
     <script src="javascripts/d3.slider.js"></script>
     <script>
-      var slider = d3.slider().min(0).max(10).ticks(10).showRange(true);
+      var slider = d3.slider().min(0).max(10).ticks(10).showRange(true).value(6);
       d3.select('#slider').call(slider);
   
       var slider1 = d3.slider().min(0).max(10);
