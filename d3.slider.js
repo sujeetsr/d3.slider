@@ -79,14 +79,20 @@ d3.slider = function module() {
       .attr("transform", function(d) {
         return "translate(" + scale(d) + ")";
       }) 
-     
+      
+      var displayValue = null;
+      if (tickFormat) { 
+        displayValue = tickFormat(value);
+      } else {
+        displayValue = d3.format(",.0f")(value);
+      }
       
       dragger.append("text")
       .attr("x", 0)
       .attr("y", -15)
       .attr("text-anchor", "middle")
       .attr("class", "draggertext")
-      .text(d3.format(",.0f")(value));
+      .text(displayValue);
 
       dragger.append("circle")
       .attr("class", "dragger-outer")
@@ -165,8 +171,14 @@ d3.slider = function module() {
       return "translate(" + scale(d) + ")";
     });
     
+    var displayValue = null;
+    if (tickFormat) { 
+      displayValue = tickFormat(value);
+    } else {
+      displayValue = d3.format(",.0f")(value);
+    }
     svg.selectAll(".dragger").select("text")
-    .text(d3.format(",.0f")(value));
+    .text(displayValue);
    
     if (range) { 
       svg.selectAll(".d3slider-rect-value")
