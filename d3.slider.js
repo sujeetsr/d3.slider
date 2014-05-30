@@ -1,7 +1,7 @@
 d3.slider = function module() {
   "use strict";
 
-  var min = 0, max = 100, svg, svgGroup, value, classPrefix, axis, 
+  var div, min = 0, max = 100, svg, svgGroup, value, classPrefix, axis, 
   height=40, rect,
   rectHeight = 12,
   tickSize = 6,
@@ -12,7 +12,7 @@ d3.slider = function module() {
 
   function slider(selection) {
     selection.each(function() {
-      var div = d3.select(this).classed('d3slider', true);
+      div = d3.select(this).classed('d3slider', true);
       width = parseInt(div.style("width"), 10)-(margin.left 
                                                 + margin.right);
 
@@ -262,6 +262,11 @@ d3.slider = function module() {
     var u = arr[arr.indexOf(l)+1];
     var nearest = ((value-l) <= (u-value)) ? l : u;
     return nearest;
+  }
+
+  slider.destroy = function() {
+    div.selectAll('svg').remove();
+    return slider;
   }
 
   return slider;
