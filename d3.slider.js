@@ -17,7 +17,7 @@ d3.slider = function module() {
                                                 + margin.right);
 
       value = value || min; 
-      scale = d3.scale.linear().domain([min, max]).range([0, width])
+      scale = d3.scaleLinear().domain([min, max]).range([0, width])
       .clamp(true);
       
       // SVG 
@@ -44,9 +44,8 @@ d3.slider = function module() {
       }
       
       // Axis      
-      var axis = d3.svg.axis()
+      var axis = d3.axisBottom()
       .scale(scale)
-      .orient("bottom");
       
       if (ticks != 0) {
         axis.ticks(ticks);
@@ -110,7 +109,7 @@ d3.slider = function module() {
 
 
       // Enable dragger drag 
-      var dragBehaviour = d3.behavior.drag();
+      var dragBehaviour = d3.drag();
       dragBehaviour.on("drag", slider.drag);
       dragger.call(dragBehaviour);
       
