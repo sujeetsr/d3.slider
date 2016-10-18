@@ -17,6 +17,12 @@
     -->
     <link rel="stylesheet" type="text/css" href="http://sujeetsr.github.io/d3.slider/stylesheets/print.css" media="print" />
     <link rel="stylesheet" type="text/css" href="http://sujeetsr.github.io/d3.slider/stylesheets/d3.slider.css" media="screen" />
+    <style>
+        /* responsive test */
+        .inner {
+            width: 90%;
+        }
+    </style>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -197,6 +203,18 @@ slider.destroy()
 
     var slider7 = d3.slider().min(0).max(10).ticks(10).showRange(true).value(6);
     d3.select('#slider7').call(slider7);
+
+    d3.select(window).on("resize", function() {
+        slider.resize();
+        slider1.resize();
+        slider2.resize();
+        slider3.resize();
+        slider4.resize();
+        slider5.resize();
+        slider6.resize();
+        slider7.resize();
+    });
+
 </script>
 <script type="text/javascript" src="http://sujeetsr.github.io/d3.slider/plugins/google-code-prettify/prettify.js?skin=sunburst"></script>
 
